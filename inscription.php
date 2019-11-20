@@ -66,6 +66,35 @@
             </div>
 
   </section>
+    <label class="fab">
+
+						<input type="checkbox">
+
+						<div class="fab-menu">
+
+						<div class="fab-btn">+</div>
+
+						<ul>
+                        <li tooltipe="Connexion"><a href="inscription.php" target="_blank"><button>Connexion</button></a></li>
+                        <li tooltip="Deconnexion"><a href="deconnexion.php" target="_blank"><button>Deconnexion</button></a></li>
+                        <?php
+                            if(isset($_POST['deconnexion']))
+                        {
+
+                            echo "On vous deconnecte";
+                            session_unset();
+
+                        }
+                        ?>
+                        </ul>
+                        </div>
+
+                        <div class="fab-blank"></div>
+
+    </label> 
+
+
+
   </body>
 
   </html>
