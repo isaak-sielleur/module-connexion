@@ -5,7 +5,7 @@ $connexion = mysqli_connect("localhost","root", "","moduleconnexion");
 
 $requete= "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
 $query= mysqli_query($connexion,$requete);
-$resulat=mysqli_fetch_all($query, MYSQLI_ASSOC);
+$data = mysqli_fetch_assoc($query);
 ?>
 
 <html>
@@ -18,20 +18,21 @@ $resulat=mysqli_fetch_all($query, MYSQLI_ASSOC);
     <body class="bodyprofil">
         <section>
                 <h1 class="h1profil ">Profil</h1>
-                <?php foreach($resulat as $utilisateurs){ ?>
+               
                 <form class="formprofil" method="post" >
+
                 <div class="alert alert-error"></div>
                 
-                    <input style="color:black" class="inputprofil" type="text" name="login" placeholder="login" value="<?php echo $utilisateurs['login']; ?>" required>
+                    <input style="color:black" class="inputprofil" type="text" name="login" placeholder="login" value="<?php echo $data['login']; ?>" required>
                     <br/>
                     
-                    <input style="color:black" class="inputprofil"  type="text" name="prenom"  placeholder="prenom" value="<?php echo $utilisateurs['prenom']; ?>" required>
+                    <input style="color:black" class="inputprofil"  type="text" name="prenom"  placeholder="prenom" value="<?php echo $data['prenom']; ?>" required>
                     <br/>
 
-                    <input style="color:black" class="inputprofil"  type="text" name="nom" placeholder="nom" value="<?php echo $utilisateurs['nom']; ?>" required>
+                    <input style="color:black" class="inputprofil"  type="text" name="nom" placeholder="nom" value="<?php echo $data['nom']; ?>" required>
                     <br/>
                     
-                    <input style="color:black" class="inputprofil"  type="password" name="password" placeholder="password" value="<?php echo $utilisateurs['password']; ?>" required>
+                    <input style="color:black" class="inputprofil"  type="password" name="password" placeholder="password" value="<?php echo $data['password']; ?>" required>
                     <br/>
                     
                     <input id="valider" name="submit" type="submit" value="Valider">
@@ -39,7 +40,7 @@ $resulat=mysqli_fetch_all($query, MYSQLI_ASSOC);
                 </form>
 
                     <?php
-                }
+                
 
                      if (isset($_POST['submit']))
                     {
